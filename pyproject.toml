@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ixno-sdk"
+version = "0.1.0"
+description = "IXNO Cloud Gene Pool — thin Python client (search/push/register)"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "IXNO"}]
+dependencies = []
+
+[project.scripts]
+ixno = "ixno.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["ixno*"]
