@@ -1,7 +1,26 @@
-# IXNO SDK
+# 🧬 IXNO · 基因交换网络 SDK
 
-IXNO 基因交换网络 · Python + TypeScript SDK · 零第三方依赖
-*Gene Exchange Network — search, push, evolve reusable AI tools.*
+**让 AI 自己写工具，让工具被人复用** · *LLMs that build their own tools. Tools that everyone can reuse.*
+
+IXNO 是 **Paladin** 引擎的第一个应用——AI 写出来的工具基因，在这里搜索、推送、复用。
+
+| | [Paladin](https://gitee.com/gz2026/paladin-agent) · 引擎 | **IXNO · 应用** |
+|---|---|---|
+| 定位 | AI 自己写工具 | 工具被人复用 |
+| 核心 | 零依赖脚手架 · 工具合成 · 沙箱验证 | 基因池搜索 · 推送 · 复用 |
+| 语言 | Python | Python + TypeScript SDK |
+| 许可 | Apache 2.0 | **MIT** |
+
+```
+让 LLM 自己写工具 ──→ Paladin（引擎）
+                          │
+                          ▼
+让写出来的工具被人复用 ──→ IXNO（基因交换网络）
+```
+
+**双语言 SDK**（Python + TypeScript）· **零第三方依赖** · 云端基因池 [ixno.com](https://ixno.com) 在线可用
+
+---
 
 ## 安装 / Install
 
