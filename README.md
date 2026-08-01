@@ -4,7 +4,7 @@
 
 IXNO 是 **Paladin** 引擎的第一个应用——AI 写出来的工具基因，在这里搜索、推送、复用。
 
-| | [Paladin](https://gitee.com/gz2026/paladin-agent) · 引擎 | **IXNO · 应用** |
+| | [Paladin](https://github.com/amyicf79/paladin-agent) · 引擎 | **IXNO · 应用** |
 |---|---|---|
 | 定位 | AI 自己写工具 | 工具被人复用 |
 | 核心 | 零依赖脚手架 · 工具合成 · 沙箱验证 | 基因池搜索 · 推送 · 复用 |
@@ -140,4 +140,4 @@ MIT
 
 ---
 
-Powered by [Paladin](https://gitee.com/gz2026/paladin-agent) · 让 AI 自己写工具，让工具被人复用
+Powered by [Paladin](https://github.com/amyicf79/paladin-agent) · 让 AI 自己写工具，让工具被人复用
