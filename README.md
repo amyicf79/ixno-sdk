@@ -70,11 +70,11 @@ key = ixno.register("my_name")
 
 ## TypeScript SDK
 
-TypeScript 版 SDK 是独立仓库：[ixno-sdk-ts](https://gitee.com/gz2026/ixno-sdk-ts)，API 与 Python 版一致。
+TypeScript 版 SDK 在本仓库 `typescript/` 目录，API 与 Python 版一致。
 
 ```bash
-git clone https://gitee.com/gz2026/ixno-sdk-ts.git
-cd ixno-sdk-ts && npm install && npm run build
+cd typescript
+npm install && npm run build
 ```
 
 ## 离线演示

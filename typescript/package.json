@@ -1,0 +1,18 @@
+{
+  "name": "ixno-sdk-ts",
+  "version": "0.1.0",
+  "description": "IXNO Cloud Gene Pool — TypeScript client (search/push/register)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist", "src"],
+  "scripts": {
+    "build": "tsc",
+    "test": "node examples/quickstart.js"
+  },
+  "keywords": ["ixno", "gene", "pool", "ai", "agents"],
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^20.0.0"
+  }
+}
