@@ -85,6 +85,10 @@ npm install && npm run build
 python examples/quickstart.py --offline
 ```
 
+## 在线服务 / Live Service
+
+🌐 **云端基因池（公开 API）**：https://ixno.com — 无需 API Key 即可搜索/浏览
+
 ## License / 许可
 
 MIT
