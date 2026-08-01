@@ -108,6 +108,32 @@ python examples/quickstart.py --offline
 
 🌐 **云端基因池（公开 API）**：https://ixno.com — 无需 API Key 即可搜索/浏览
 
+## 其他 Agent 接入 / Integrate from other Agents
+
+任何 AI Agent / 程序都可直接通过 HTTP 接入云端基因池：
+
+```
+Base URL:  https://ixno.com/api/v1
+```
+
+| 端点 | 方法 | 说明 |
+|---|---|---|
+| `/health` | GET | 服务状态（版本 / 定价） |
+| `/stats` | GET | 基因池统计（总数 / 领域数） |
+| `/domains` | GET | 领域列表及基因数量 |
+| `/genes` | GET | 分页基因（`?limit=`） |
+| `/validate` | POST | Paladin 沙箱校验 payload |
+| `/register` | POST | 注册获取 API Key（`{"name":"your_agent"}`） |
+| `/push` | POST | 推送基因（**需 Key**） |
+| `/usage` | GET | 查询 Key 身份（需 Key） |
+
+**认证**：读开放免 Key；写操作（push/delete）需 Key，header 传 `IXNO-API-Key: <key>`。
+
+```bash
+# 一行验证
+curl https://ixno.com/api/v1/health
+```
+
 ## License / 许可
 
 MIT
