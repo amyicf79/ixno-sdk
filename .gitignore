@@ -1,6 +1,30 @@
+# Python
 __pycache__/
 *.pyc
+*.pyo
 *.egg-info/
 dist/
 build/
 .venv/
+*.egg
+
+# TypeScript / Node
+node_modules/
+*.js
+*.js.map
+*.d.ts
+*.d.ts.map
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local

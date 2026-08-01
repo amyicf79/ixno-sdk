@@ -1,64 +1,94 @@
-# IXNO SDK (Python)
+# IXNO SDK
 
-> Thin Python client for the **IXNO Cloud Gene Pool** — search, push, and register genes over REST. Zero third-party dependencies (stdlib only).
-> IXNO 云端基因池的 Python 轻客户端——REST 搜索/推送/注册。零第三方依赖（仅标准库）。
+IXNO 基因交换网络 · Python + TypeScript SDK · 零第三方依赖
+*Gene Exchange Network — search, push, evolve reusable AI tools.*
 
-## Install / 安装
+## 安装 / Install
 
 ```bash
 pip install ixno-sdk
-# or from source:
-git clone https://github.com/your-org/ixno-sdk.git && cd ixno-sdk && pip install -e .
 ```
 
-## Quickstart / 快速开始
+## 快速开始 / Quick Start
+
+3 行搜索 10,000+ 基因池（含 332 条 TCM 中医基因）：
 
 ```python
 from ixno import IXNO
 
-c = IXNO()                       # read-only, no key needed
-print(c.health())                # {"status": "ok", "version": "8.2.0", ...}
-print(c.search("中医", limit=5)) # Chinese search supported via keywords column
-print(c.stats())
-
-# write operations need an API key / 写操作需要 API Key
-c2 = IXNO(api_key="ixno-xxxx")
-c2.push("my_gene_001", "My Gene", "body content", domain="Custom", fitness=0.8)
+ixno = IXNO()
+ixno.search("中医")      # 332 条，168ms
+ixno.search("辨证")      # 70 条
+ixno.health()            # {"version": "8.2.0", "pricing": "free"}
 ```
+
+不需要 API Key 即可搜索和浏览。推送基因才需要 Key（通过 /register 免费获取）。
+
+## API 参考
+
+### 读取（无需 Key）
+
+| 方法 | 说明 |
+|---|---|
+| `health()` | 服务健康检查，返回版本和定价模式 |
+| `search(q, domain="", limit=20, sort="")` | 搜索基因池。中文通过 keywords 列支持 |
+| `get_gene(gene_id)` | 按 ID 获取单个基因完整内容 |
+| `domains()` | 列出所有领域及其基因数量 |
+| `stats()` | 基因池统计（总数、领域数、平均 fitness） |
+| `list_genes(domain="", limit=100, offset=0)` | 分页列出基因 |
+| `validate(body)` | 校验基因 payload（Paladin 沙箱，不落库） |
+
+### 写入（需要 API Key）
+
+| 方法 | 说明 |
+|---|---|
+| `push(gene_id, name, body, domain="External", fitness=0.5, ...)` | 推送基因入池（异步队列） |
+| `delete(gene_id)` | 删除基因 |
+
+### 用户
+
+| 方法 | 说明 |
+|---|---|
+| `register(name)` | 注册新 API Key（10 分钟/IP 限制） |
+| `usage()` | 查询当前 Key 的身份信息 |
 
 ## CLI
 
 ```bash
-ixno health
+ixno search "针灸"
 ixno stats
-ixno search "中医" --limit 5
-ixno push --id g1 --name "demo" --body "hello" --key ixno-xxxx
+ixno health
 ```
 
-## API Reference / 接口一览
-
-| Method | Endpoint | Auth | Description / 说明 |
-|---|---|---|---|
-| `health()` | GET /api/v1/health | — | service status |
-| `stats()` | GET /api/v1/stats | — | pool statistics |
-| `search(q)` | GET /api/v1/search | — | keyword search (中文可用) |
-| `get_gene(id)` | GET /api/v1/genes/{id} | — | single gene |
-| `list_genes()` | GET /api/v1/genes | — | paged list |
-| `domains()` | GET /api/v1/domains | — | domain distribution |
-| `validate()` | POST /api/v1/validate | — | validate payload |
-| `push(...)` | POST /api/v1/push | **key** | async push |
-| `delete(id)` | DELETE /api/v1/genes/{id} | **key** | delete gene |
-| `register(name)` | POST /api/v1/register | — | get a new key (10min/IP) |
-| `usage()` | GET /api/v1/usage | **key** | key identity |
-
-## Get an API Key / 获取 API Key
+## 获取 API Key
 
 ```python
-from ixno import IXNO
-key = IXNO().register("my_username")   # returns {"api_key": "ixno-..."}
+ixno = IXNO()
+key = ixno.register("my_name")
+# {"api_key": "ixno-...", "name": "my_name"}
 ```
-Note: only the write endpoints (push/delete) need a key. Search and reads are open. / 仅写端点（push/delete）需要 Key，搜索与读取开放。
+
+## TypeScript SDK
+
+TypeScript 版 SDK 是独立仓库：[ixno-sdk-ts](https://gitee.com/gz2026/ixno-sdk-ts)，API 与 Python 版一致。
+
+```bash
+git clone https://gitee.com/gz2026/ixno-sdk-ts.git
+cd ixno-sdk-ts && npm install && npm run build
+```
+
+## 离线演示
+
+无需网络即可运行（使用内置样本基因）：
+
+```bash
+python examples/quickstart.py --offline
+```
 
 ## License / 许可
 
 MIT
+
+---
+
+Powered by [Paladin](https://gitee.com/gz2026/paladin-agent) · 让 AI 自己写工具，让工具被人复用
